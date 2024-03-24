@@ -26,25 +26,31 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.your-element-class {
+  animation: bounce 2s infinite;
 }
 
-/* styles/globals.css */
-@keyframes customBounce {
+@keyframes bounce {
   0%,
   100% {
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+  20% {
+    transform: translateY(-800px); /* Increase the bounce height */
+    animation-timing-function: ease-out;
+  }
+  40%,
+  60% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
   }
   50% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transform: translateY(-50px); /* Add an extra bounce in the middle */
+    animation-timing-function: ease-out;
   }
-}
-
-.animate-customBounce {
-  animation: customBounce 1s infinite;
+  80% {
+    transform: translateY(-500px); /* Another bounce before ending */
+    animation-timing-function: ease-out;
+  }
 }

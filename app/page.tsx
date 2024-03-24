@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { translate, translateToJa } from "../libs/translate";
 
 export default function Home() {
   const [ingredient, setIngredient] = useState("");
+  const [showContent, setShowContent] = useState(false);
 
   type Recipe = {
     recipe: {
@@ -16,6 +17,12 @@ export default function Home() {
   };
 
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+
+  useEffect(() => {
+    // アニメーション終了後にコンテンツを表示
+    const timer = setTimeout(() => setShowContent(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const fetchRecipes = async () => {
     const translatedIngredient = await translate(ingredient);
@@ -43,6 +50,20 @@ export default function Home() {
     );
     setRecipes(translatedRecipes);
   };
+
+  if (!showContent) {
+    return (
+      <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+        <Image
+          src="/mafia.jpeg" // ここにハゲの人の画像パスを指定
+          alt="ハゲの人"
+          layout="fill"
+          objectFit="cover"
+          className="mx-auto your-element-class"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
