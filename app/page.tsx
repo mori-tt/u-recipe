@@ -64,7 +64,6 @@ export default function Home() {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-6xl mx-auto">
