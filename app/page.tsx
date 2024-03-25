@@ -78,7 +78,7 @@ export default function Home() {
           />
           <button
             onClick={fetchRecipes}
-            className="mt-4 w-full bg-purple-500 text-white p-2 rounded-lg hover:bg-purple-600 transition duration-300 ease-in-out transform hover:-translate-y-1 shadow-md"
+            className="mt-4 w-24 bg-purple-500 text-white p-2 rounded-lg hover:bg-purple-600 transition duration-300 ease-in-out transform hover:-translate-y-1 shadow-md"
           >
             検索
           </button>
